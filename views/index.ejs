@@ -6,8 +6,6 @@
 		<script type = "text/javascript" src="/javascripts/click.js"></script>
 	</head>
 	<body>
-		<button id = "modal_open">Open Modal</button>
-
 		<div id = "background" class = "background">
 			<div id = "myModal" class = "modal">
 				<div class = "modal-header">
@@ -15,11 +13,11 @@
 					<h2>정보수정하기</h2>
 				</div>
 				<div class = "modal-body">
-					<p>이메일</p>
-					<input type = "email" name = "emailaddress">
+					<span id = "information"></span><br>
+					<input id = "info_input" type = "text">
 				</div>
 				<div class = "modal-footer">
-					<button id = "Save">저장하기</button>
+					<button id = "save">저장하기</button>
 				</div>
 			</div>
 		</div>
@@ -29,7 +27,6 @@
 			<p> 이름</p>
 			<div class="profile">
 				<%= c_name %>
-				<button id = "name_change">수정</button>
 			</div>
 			<p>이메일</p>
 			<div class = "profile">

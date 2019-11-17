@@ -10,7 +10,6 @@ function update(table,set,condition){
 				console.log('update : ',err);
 				reject('error');
 			}else{
-				console.log('update : ',results);
 				resolve(results);
 			}
 		});
@@ -36,7 +35,7 @@ database.connect = function(){
 	connection = DB.createConnection({
 		host : 'localhost',
 		user : 'root',
-		password : 'nsrklisr2@',
+		password : '*****',
 		database : 'eszett'
 	});
 
@@ -59,10 +58,9 @@ database.getProfile = async function(customer_id){
 
 database.setProfile = async function(customer_id,field,val){
 	return new Promise(function(resolve,reject){
-		var set = 'set '+field+' = \''+val+'\'';
-		var condition = 'where customer_id = \''+customer_id+'\'';
+		var set = field+' = \''+val+'\'';
+		var condition = 'customer_id = \''+customer_id+'\'';
 		update('customer',set,condition).then(function(data){
-			console.log('setProfile : ',data);
 			if(data == 'error'){
 				reject('error');
 			}else{
