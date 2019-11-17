@@ -25,7 +25,6 @@ function select(tables,attributes,condition){
 				console.log('select : ',err);
 				reject('error');
 			}else{
-				console.log('select : ',results);
 				resolve(results);
 			}
 		});
@@ -42,14 +41,13 @@ database.connect = function(){
 	});
 
 	connection.connect;
-	console.log("Connection\n");
+	console.log("Connection");
 }
 
 database.getProfile = async function(customer_id){
 	return new Promise(function(resolve,reject){
-		var condition = 'where name = \''+customer_id+'\'';
+		var condition = 'where customer_id = \''+customer_id+'\'';
 		select('customer','*',condition).then(function(data){
-			console.log('getProfile : ',data);
 			if(data == 'error'){
 				reject('error');
 			}else{
@@ -62,7 +60,7 @@ database.getProfile = async function(customer_id){
 database.setProfile = async function(customer_id,field,val){
 	return new Promise(function(resolve,reject){
 		var set = 'set '+field+' = \''+val+'\'';
-		var condition = 'where name = \''+customer_id+'\'';
+		var condition = 'where customer_id = \''+customer_id+'\'';
 		update('customer',set,condition).then(function(data){
 			console.log('setProfile : ',data);
 			if(data == 'error'){
