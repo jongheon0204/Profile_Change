@@ -2,6 +2,7 @@ const DB = require('mysql');
 var connection;
 var database = {};
 
+//update query를 만들어 실행
 function update(table,set,condition){
 	return new Promise(function(resolve,reject){
 		var query = 'update '+table+' set '+set+' where '+condition+';';
@@ -16,6 +17,7 @@ function update(table,set,condition){
 	});
 };
 
+//select query를 만들어 실행
 function select(tables,attributes,condition){
 	return new Promise(function(resolve,reject){
 		var query = 'select '+attributes+' from '+tables+' '+condition+';';
@@ -30,18 +32,20 @@ function select(tables,attributes,condition){
 	});
 }
 
+//export함수 database객체에 DB 서버와 연결할 함수 설정
 database.connect = function(){
 
 	connection = DB.createConnection({
 		host : 'localhost',
 		user : 'root',
-		password : '***',
+		password : '**',
 		database : 'eszett'
 	});
 
 	connection.connect;
 }
 
+//export함수 customer_id를 이용하여 프로필 정보 얻어오기
 database.getProfile = async function(customer_id){
 	return new Promise(function(resolve,reject){
 		var condition = 'where customer_id = \''+customer_id+'\'';
@@ -55,6 +59,7 @@ database.getProfile = async function(customer_id){
 	});
 }
 
+//export함수 customer_id,field,val을 이용하여 프로필 정보 변경
 database.setProfile = async function(customer_id,field,val){
 	return new Promise(function(resolve,reject){
 		var set = field+' = \''+val+'\'';
