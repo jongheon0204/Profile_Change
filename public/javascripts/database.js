@@ -35,12 +35,11 @@ database.connect = function(){
 	connection = DB.createConnection({
 		host : 'localhost',
 		user : 'root',
-		password : '*****',
+		password : '***',
 		database : 'eszett'
 	});
 
 	connection.connect;
-	console.log("Connection");
 }
 
 database.getProfile = async function(customer_id){
